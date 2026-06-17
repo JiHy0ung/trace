@@ -10,7 +10,7 @@ interface PageProps {
 const page = async ({ params }: PageProps) => {
   const { id } = await params;
 
-  const data = dummyData.find((item) => item.id === id.toString());
+  const data = dummyData.find((item) => item.id === id);
 
   if (!data) {
     notFound();
