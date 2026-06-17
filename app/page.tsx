@@ -5,7 +5,7 @@ export default async function Home() {
 
   const ImageUrl = data
     ? data?.hdurl
-    : " https://apod.nasa.gov/apod/image/2606/SaturnRingsMoons_Cassini_960.jpg";
+    : "https://apod.nasa.gov/apod/image/2606/SaturnRingsMoons_Cassini_960.jpg";
 
   // 기본 이미지 링크
   // https://apod.nasa.gov/apod/image/2606/SaturnRingsMoons_Cassini_960.jpg

@@ -13,20 +13,22 @@ interface IApod {
 
 const SIX_HOURS = 60 * 60 * 6;
 
-export const getAPOD = async (): Promise<IApod> => {
+export const getAPOD = async (): Promise<IApod | null> => {
   try {
     const url = `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`;
 
-    const response = await fetch(url, { next: { revalidate: SIX_HOURS } });
+    const response = await fetch(url, {
+      next: { revalidate: SIX_HOURS },
+    });
 
     if (!response.ok) {
-      throw new Error("NASA API 호출 에러");
+      console.error("NASA API 실패:", response.status);
+      return null;
     }
 
-    const data = await response.json();
-
-    return data;
+    return await response.json();
   } catch (error) {
-    throw new Error("NASA API 호출 에러 발생", { cause: error });
+    console.error("NASA API 에러:", error);
+    return null;
   }
 };
