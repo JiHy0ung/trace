@@ -75,8 +75,9 @@ export default function WritePage() {
         className="
         w-full p-4
         flex justify-between items-center
-        border-t-[0.5px] border-zinc-400 dark:border-zinc-700"
-        bg-zinc-50
+        bg-zinc-50 dark:bg-zinc-950
+        border-t-[0.5px] border-zinc-400 dark:border-zinc-700
+        "
       >
         <div className="flex flex-col">
           <div className="flex"></div>
