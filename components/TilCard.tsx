@@ -9,8 +9,8 @@ export const TilCard = ({ data }: TilCardProps) => {
     <div
       className="
       flex flex-col justify-center items-start gap-2 px-6 py-5
-      bg-indigo-900/10
-      border-[1px] border-indigo-300/30 rounded-xl"
+      bg-zinc-200/50 dark:bg-zinc-900
+      border-zinc-400/30 dark:border-zinc-300/30 border-[1px] rounded-xl"
     >
       <div className="flex justify-center items-center gap-2">
         {data.tags.map((tag, index) => (
@@ -19,8 +19,8 @@ export const TilCard = ({ data }: TilCardProps) => {
             className="
             flex justify-center items-center px-3
             rounded-xl
-            text-indigo-300 font-medium text-sm
-            bg-indigo-300/10
+            text-zinc-100 dark:text-zinc-200 font-medium text-sm
+            bg-zinc-400 dark:bg-zinc-700
             "
           >
             {tag}
@@ -30,7 +30,11 @@ export const TilCard = ({ data }: TilCardProps) => {
 
       <h1 className="font-semibold">{data.title}</h1>
 
-      <p className="text-sm text-white/60 break-keep">
+      <p
+        className="
+      text-sm text-zinc-500 dark:text-zinc-400
+      break-keep"
+      >
         {data.contents.length > 100
           ? data.contents.slice(0, 100) + "..."
           : data.contents}
@@ -42,7 +46,7 @@ export const TilCard = ({ data }: TilCardProps) => {
           className="
           relative
           inline-block
-          text-indigo-300
+          text-zinc-600 dark:text-zinc-300
           cursor-pointer
 
           after:absolute
