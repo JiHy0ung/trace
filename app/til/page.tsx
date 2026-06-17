@@ -8,7 +8,8 @@ export default function TilPage() {
     <div
       className="w-full h-screen
       flex flex-col justify-start items-center
-      pt-12"
+      pt-12
+      bg-zinc-100 dark:bg-zinc-950"
     >
       <div className="w-full max-w-2xl flex flex-col gap-9 px-6">
         <h1

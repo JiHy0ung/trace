@@ -21,6 +21,7 @@ const page = async ({ params }: PageProps) => {
       className="h-screen w-full px-6
       flex flex-col justify-start items-center
       pt-18
+      bg-zinc-100 dark:bg-zinc-950
       "
     >
       <div className="flex flex-col max-w-2xl divide-y-[0.5px] divide-solid divide-zinc-700 gap-8">
@@ -30,12 +31,14 @@ const page = async ({ params }: PageProps) => {
           pb-8
           "
         >
-          <h1 className="font-bold text-3xl ">{data.title}</h1>
-          <p className="font-medium text-xs text-zinc-400">
+          <h1 className="font-bold text-3xl dark:text-zinc-100">
+            {data.title}
+          </h1>
+          <p className="font-medium text-xs text-zinc-400 ">
             {data.date.toLocaleDateString("ko-KR")}
           </p>
         </div>
-        <div>{data.contents}</div>
+        <div className="dark:text-zinc-100">{data.contents}</div>
       </div>
     </div>
   );

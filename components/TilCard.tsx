@@ -28,7 +28,7 @@ export const TilCard = ({ data }: TilCardProps) => {
         ))}
       </div>
 
-      <h1 className="font-semibold">{data.title}</h1>
+      <h1 className="font-semibold dark:text-zinc-200">{data.title}</h1>
 
       <p
         className="
@@ -41,7 +41,9 @@ export const TilCard = ({ data }: TilCardProps) => {
       </p>
 
       <div className="w-full flex justify-between text-xs">
-        <p className="text-xs">{data.date.toLocaleDateString("ko-KR")}</p>
+        <p className="text-xs dark:text-zinc-300">
+          {data.date.toLocaleDateString("ko-KR")}
+        </p>
         <p
           className="
           relative
