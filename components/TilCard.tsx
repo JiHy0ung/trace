@@ -41,7 +41,7 @@ export const TilCard = ({ data }: TilCardProps) => {
       </p>
 
       <div className="w-full flex justify-between text-xs">
-        <p className="text-xs">{data.date.toLocaleDateString()}</p>
+        <p className="text-xs">{data.date.toLocaleDateString("ko-KR")}</p>
         <p
           className="
           relative
