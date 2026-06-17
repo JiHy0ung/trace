@@ -1,15 +1,18 @@
 import { getAPOD } from "@/lib/nasa";
-import Link from "next/link";
 
 export default async function Home() {
   const data = await getAPOD();
+
+  const ImageUrl = data
+    ? data?.hdurl
+    : " https://apod.nasa.gov/apod/image/2606/SaturnRingsMoons_Cassini_960.jpg";
 
   // 기본 이미지 링크
   // https://apod.nasa.gov/apod/image/2606/SaturnRingsMoons_Cassini_960.jpg
   return (
     <div
       className="w-full h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${data?.hdurl})` }}
+      style={{ backgroundImage: `url(${ImageUrl})` }}
     ></div>
   );
 }

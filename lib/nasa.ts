@@ -18,13 +18,14 @@ export const getAPOD = async (): Promise<IApod> => {
     const url = `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`;
 
     const response = await fetch(url, { next: { revalidate: SIX_HOURS } });
-    const data = await response.json();
 
-    if (response.ok) {
-      return data;
-    } else {
+    if (!response.ok) {
       throw new Error("NASA API 호출 에러");
     }
+
+    const data = await response.json();
+
+    return data;
   } catch (error) {
     throw new Error("NASA API 호출 에러 발생", { cause: error });
   }
