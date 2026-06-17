@@ -10,9 +10,11 @@
 
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(98.5% 0 0);
+  --foreground: oklch(21% 0.006 285.885);
 }
 
 @theme inline {
@@ -23,11 +25,9 @@
   --font-wanted: "Wanted Sans Variable", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: oklch(14.1% 0.005 285.823);
+  --foreground: oklch(96.7% 0.001 286.375);
 }
 
 body {
