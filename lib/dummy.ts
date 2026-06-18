@@ -25,4 +25,28 @@ export const dummyData: ITil[] = [
     date: new Date("2026-05-19"),
     tags: ["JavaScript", "fetch"],
   },
+  {
+    id: "4",
+    title: "React useEffect 의존성 배열이 중요한 이유",
+    contents:
+      "useEffect는 의존성 배열에 들어간 값이 변경될 때만 실행된다. 누락되면 stale closure 문제가 발생하거나 lint 경고가 생긴다. 함수나 객체는 매 렌더링마다 참조가 바뀔 수 있어 useCallback, useMemo로 최적화가 필요하다.",
+    date: new Date("2026-05-18"),
+    tags: ["React", "Hooks"],
+  },
+  {
+    id: "5",
+    title: "Next.js에서 Client Component와 Server Component 구분",
+    contents:
+      "Server Component는 기본이며 서버에서 렌더링되어 번들 크기를 줄일 수 있다. useState, useEffect 등 브라우저 API가 필요하면 'use client'를 선언해야 한다. 클라이언트 컴포넌트는 상호작용이 필요한 UI에만 최소로 사용하는 것이 좋다.",
+    date: new Date("2026-05-17"),
+    tags: ["Next.js", "Architecture"],
+  },
+  {
+    id: "6",
+    title: "Git에서 reset vs revert 차이",
+    contents:
+      "reset은 커밋 히스토리를 되돌리며 히스토리를 변경한다. 반면 revert는 새로운 커밋을 생성해서 변경사항을 되돌린다. 협업 환경에서는 히스토리를 보존하는 revert가 안전하다.",
+    date: new Date("2026-05-16"),
+    tags: ["Git"],
+  },
 ];
