@@ -168,6 +168,7 @@ body {
 .wmde-markdown,
 .wnde-markdown-color {
   background-color: transparent !important;
+  font-family: "Wanted Sans Variable", sans-serif !important;
 }
 
 body .w-md-editor-text-pre > code,
