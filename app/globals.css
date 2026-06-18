@@ -119,7 +119,7 @@ body {
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: oklch(46.04% 0.00005 271.152);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -169,6 +169,11 @@ body {
 .wnde-markdown-color {
   background-color: transparent !important;
   font-family: "Wanted Sans Variable", sans-serif !important;
+  color: oklch(14.1% 0.005 285.823) !important;
+}
+
+.dark .wmde-markdown {
+  color: oklch(92% 0.004 286.32) !important;
 }
 
 body .w-md-editor-text-pre > code,

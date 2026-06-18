@@ -1,21 +1,39 @@
 "use client";
 
 import { useAuth } from "@/app/context/AuthContext";
-import { createPost } from "@/lib/post";
+import { editPost, getPostById } from "@/lib/post";
 import { supabase } from "@/lib/supabase";
 import MDEditor from "@uiw/react-md-editor";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
 
-export default function WritePage() {
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default function EditPage({ params }: PageProps) {
+  const { id } = use(params);
   const [title, setTitle] = useState<string>("");
   const [contents, setContents] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
   const [saveTag, setSaveTag] = useState<string>("");
 
+  useEffect(() => {
+    const fetchPost = async () => {
+      const post = await getPostById(Number(id));
+
+      if (!post) return;
+
+      setTitle(post.title);
+      setContents(post.contents);
+      setTags(post.tags);
+    };
+
+    fetchPost();
+  }, [id]);
   const { user, setUser } = useAuth();
   const router = useRouter();
 
@@ -139,7 +157,7 @@ export default function WritePage() {
               router.replace("/til");
               return;
             }
-            createPost(title, contents, tags);
+            editPost(Number(id), title, contents, tags);
             router.replace("/til");
           }}
           className="
@@ -152,7 +170,7 @@ export default function WritePage() {
           hover:bg-zinc-700 hover:dark:bg-zinc-400
           "
         >
-          발행
+          편집
         </button>
       </div>
     </div>

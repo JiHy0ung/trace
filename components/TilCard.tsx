@@ -1,3 +1,4 @@
+import { stripMarkdown } from "@/lib/format";
 import { ITil } from "@/types";
 
 interface TilCardProps {
@@ -10,7 +11,7 @@ export const TilCard = ({ data, index }: TilCardProps) => {
     <article className="group py-8 px-4 border-b border-zinc-200 dark:border-zinc-800">
       <div className="flex items-start gap-6">
         {index !== undefined && (
-          <span className="text-xs font-mono text-zinc-300 dark:text-zinc-700 pt-1 min-w-[2rem] select-none">
+          <span className="text-xs font-mono text-zinc-400 dark:text-zinc-700 pt-1 min-w-[2rem] select-none">
             {String(index).padStart(2, "0")}
           </span>
         )}
@@ -20,7 +21,7 @@ export const TilCard = ({ data, index }: TilCardProps) => {
             {data.tags.map((tag, i) => (
               <span
                 key={i}
-                className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 border border-zinc-300 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 rounded"
+                className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 border border-zinc-300 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 rounded bg-zinc-200 dark:bg-zinc-800"
               >
                 {tag}
               </span>
@@ -32,12 +33,12 @@ export const TilCard = ({ data, index }: TilCardProps) => {
           </h2>
 
           <p className="text-sm text-zinc-500 dark:text-zinc-500 leading-relaxed line-clamp-2">
-            {data.contents}
+            {stripMarkdown(data.contents)}
           </p>
 
           <div className="flex items-center justify-between">
             <time className="text-xs font-mono text-zinc-400 dark:text-zinc-600">
-              {data.date.toLocaleDateString("ko-KR", {
+              {new Date(data.created_at).toLocaleDateString("ko-KR", {
                 year: "numeric",
                 month: "2-digit",
                 day: "2-digit",

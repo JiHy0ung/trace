@@ -1,9 +1,12 @@
 import { TilCard } from "@/components/TilCard";
-import { dummyData } from "@/lib/dummy";
+import { getPosts } from "@/lib/post";
 import Link from "next/link";
 
-export default function TilPage() {
-  const data = dummyData;
+// Next.js에게 페이지 캐시하지말라고 알려줌
+export const revalidate = 0;
+
+export default async function TilPage() {
+  const posts = await getPosts();
   return (
     <div className="w-full h-screen flex flex-col items-center bg-zinc-50 dark:bg-zinc-950">
       <header className="flex-none w-full max-w-2xl mx-auto px-6 pt-20 pb-8">
@@ -15,7 +18,7 @@ export default function TilPage() {
           mb-6
           font-bold tracking-tighter
           text-5xl
-          text-zinc-400
+          text-zinc-300 dark:text-zinc-700
           [&_strong]:text-zinc-700
           [&_strong]:dark:text-zinc-100
           [&_strong]:text-4xl
@@ -26,20 +29,24 @@ export default function TilPage() {
         <div className="flex items-center gap-3">
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
           <span className="text-xs font-mono text-zinc-400 dark:text-zinc-600">
-            {data.length} entries
+            {posts?.length} entries
           </span>
         </div>
       </header>
 
       <div
         id="list"
-        className=" flex-1
+        className="w-full flex-1
         overflow-y-auto custom-scroll"
       >
         <div className="w-full max-w-2xl mx-auto px-6 pb-16 flex flex-col">
-          {data.map((item, index) => (
-            <Link key={item.id} href={`/til/${item.id}`}>
-              <TilCard data={item} index={index + 1} />
+          {posts?.map((item, index) => (
+            <Link
+              key={item.id}
+              href={`/til/${item.id}`}
+              className="block w-full"
+            >
+              <TilCard data={item} index={posts.length - index} />
             </Link>
           ))}
         </div>

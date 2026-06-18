@@ -37,8 +37,15 @@ const SideBar = () => {
     () => false,
   );
 
-  if (!mounted) return null;
-
+  if (!mounted)
+    return (
+      <aside
+        className="w-18 shrink-0
+        flex flex-col items-center pt-6 pb-8 gap-15
+        bg-zinc-100 dark:bg-zinc-950
+        border-r-1 border-zinc-300 dark:border-zinc-800"
+      />
+    );
   const isAdmin = user?.id === ADMIN_ID;
 
   const logout = async () => {
@@ -50,10 +57,10 @@ const SideBar = () => {
     <aside
       className={`
       w-18 shrink-0
-      flex flex-col items-center pt-6 px-1 pb-8 gap-15
+      flex flex-col items-center pt-6 pb-8 gap-15
       bg-zinc-100 dark:bg-zinc-950
       border-r-1
-      border-zinc-300 dark:border-zinc-800      
+      border-zinc-300 dark:border-zinc-900      
       `}
     >
       <Link href={"/"} className="cursor-pointer">
@@ -67,25 +74,34 @@ const SideBar = () => {
 
       <div className="h-full flex flex-col items-center justify-between gap-4">
         <div className="h-full flex flex-col items-center gap-3">
-          <Link href={"/"} className="p-3">
+          <Link
+            href={"/"}
+            className="p-3 hover:bg-zinc-200 hover:dark:bg-zinc-800 rounded-xl"
+          >
             <HomeIcon
-              size={24}
-              className={` ${pathName === "/" ? (currentTheme === "dark" ? "text-zinc-100" : "text-zinc-800") : "text-zinc-400"}`}
+              size={20}
+              className={` ${pathName === "/" ? (currentTheme === "dark" ? "text-zinc-100" : "text-zinc-800") : "text-zinc-400"} hover:dark:text-zinc-100 hover:text-zinc-800`}
             />
           </Link>
 
-          <Link href={"/til"} className="p-3">
+          <Link
+            href={"/til"}
+            className="p-3 hover:bg-zinc-200 hover:dark:bg-zinc-800 rounded-xl"
+          >
             <BookTextIcon
-              size={24}
-              className={` ${isTilPage ? (currentTheme === "dark" ? "text-zinc-100" : "text-zinc-800") : "text-zinc-400"}`}
+              size={20}
+              className={` ${isTilPage ? (currentTheme === "dark" ? "text-zinc-100" : "text-zinc-800") : "text-zinc-400"} hover:dark:text-zinc-100 hover:text-zinc-800`}
             />
           </Link>
 
           {isAdmin && (
-            <Link href="/admin/write" className="p-3">
+            <Link
+              href="/admin/write"
+              className="p-3 hover:bg-zinc-200 hover:dark:bg-zinc-800 rounded-xl"
+            >
               <PenToolIcon
-                size={24}
-                className={` ${pathName === "/admin/write" ? (currentTheme === "dark" ? "text-zinc-100" : "text-zinc-800") : "text-zinc-400"}`}
+                size={20}
+                className={` ${pathName === "/admin/write" ? (currentTheme === "dark" ? "text-zinc-100" : "text-zinc-800") : "text-zinc-400"} hover:dark:text-zinc-100 hover:text-zinc-800`}
               />
             </Link>
           )}
@@ -93,16 +109,16 @@ const SideBar = () => {
 
         <button
           onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
-          className="flex self-end p-3 cursor-pointer"
+          className="flex self-end p-3 cursor-pointer hover:bg-zinc-200 hover:dark:bg-zinc-800 rounded-xl"
         >
           {theme === "dark" ? (
             <MoonIcon
-              size={24}
+              size={20}
               className={"text-zinc-300 hover:text-sky-300"}
             />
           ) : (
             <SunIcon
-              size={24}
+              size={20}
               className={"text-zinc-400 hover:text-amber-400"}
             />
           )}
@@ -116,22 +132,22 @@ const SideBar = () => {
               window.location.href = "/login";
             }
           }}
-          className="cursor-pointer"
+          className="group relative flex justify-center items-center p-3 cursor-pointer hover:bg-zinc-200 hover:dark:bg-zinc-800 rounded-xl"
         >
           {user ? (
-            <div className="relative w-6 h-6 group cursor-pointer">
+            <>
               <UserRoundCheckIcon
-                size={24}
-                className="absolute inset-0 text-pink-600 opacity-100 group-hover:opacity-0 transition"
+                size={20}
+                className="text-pink-600 opacity-100 group-hover:opacity-0 transition absolute"
               />
               <LogoutIcon
-                size={24}
-                className="absolute inset-0 text-pink-600 opacity-0 group-hover:opacity-100 transition"
+                size={20}
+                className="text-zinc-700 dark:text-zinc-200 opacity-0 group-hover:opacity-100 transition"
               />
-            </div>
+            </>
           ) : (
             <KeyIcon
-              size={24}
+              size={20}
               className="text-zinc-500 hover:text-yellow-400"
             />
           )}
