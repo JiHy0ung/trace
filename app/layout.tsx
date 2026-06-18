@@ -31,6 +31,18 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <link
+          rel="icon"
+          href="/trace_logo_light.png"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          rel="icon"
+          href="/trace_logo_dark.png"
+          media="(prefers-color-scheme: dark)"
+        />
+      </head>
       <body className="min-h-full flex flex-row">
         <AuthProvider>
           <ThemeProvider attribute="class" enableSystem defaultTheme="system">
