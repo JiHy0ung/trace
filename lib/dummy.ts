@@ -49,4 +49,64 @@ export const dummyData: ITil[] = [
     date: new Date("2026-05-16"),
     tags: ["Git"],
   },
+  {
+    id: "7",
+    title: "Hydration 오류가 발생하는 대표적인 이유",
+    contents: `
+## Hydration 오류란?
+
+Next.js에서 Hydration 오류는 서버에서 렌더링된 HTML과 클라이언트에서 React가 다시 렌더링한 결과가 일치하지 않을 때 발생한다. 이 과정은 SSR(Server Side Rendering)과 CSR(Client Side Rendering)이 함께 동작하면서 생기는 핵심 개념이다.
+
+---
+
+## 주요 원인
+
+### 1. 비결정적인 값 사용
+- \`Date.now()\`
+- \`Math.random()\`
+
+이 값들은 렌더링 시점마다 결과가 달라지기 때문에 서버와 클라이언트 결과가 서로 다르게 나온다.
+
+---
+
+### 2. 브라우저 전용 API 사용
+- window
+- document
+- localStorage
+
+이 API들은 서버 환경에서는 존재하지 않기 때문에 초기 렌더링 단계에서 mismatch가 발생한다.
+
+---
+
+### 3. 테마/환경 의존 값
+예를 들어 \`next-themes\`를 사용하는 경우:
+
+- 서버: 기본 theme로 렌더링
+- 클라이언트: 시스템 theme 적용
+
+이 차이 때문에 UI가 다르게 렌더링된다.
+
+---
+
+## 해결 방법
+
+### 1. useEffect로 클라이언트 전용 처리
+브라우저에서만 실행되도록 로직을 이동한다.
+
+### 2. dynamic import (SSR 비활성화)
+특정 컴포넌트를 클라이언트 전용으로 분리한다.
+
+### 3. 초기 렌더링 값 통일
+서버와 클라이언트가 같은 초기 UI를 렌더링하도록 보장한다.
+
+---
+
+## 핵심 정리
+
+Hydration 오류의 본질은 "서버와 클라이언트의 첫 렌더 결과가 달라지는 문제"이다.  
+따라서 해결의 핵심은 **렌더링 결과를 동일하게 유지하는 것**이다.
+`,
+    date: new Date("2026-05-15"),
+    tags: ["Next.js", "Debug"],
+  },
 ];
