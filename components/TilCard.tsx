@@ -2,71 +2,53 @@ import { ITil } from "@/types";
 
 interface TilCardProps {
   data: ITil;
+  index?: number;
 }
 
-export const TilCard = ({ data }: TilCardProps) => {
+export const TilCard = ({ data, index }: TilCardProps) => {
   return (
-    <div
-      className="
-      flex flex-col justify-center items-start gap-2 px-6 py-5
-      bg-zinc-200/50 dark:bg-zinc-900
-      border-zinc-400/30 dark:border-zinc-300/30 border-[1px] rounded-xl"
-    >
-      <div className="flex justify-center items-center gap-2">
-        {data.tags.map((tag, index) => (
-          <div
-            key={index}
-            className="
-            flex justify-center items-center px-3
-            rounded-xl
-            text-zinc-100 dark:text-zinc-200 font-medium text-sm
-            bg-zinc-400 dark:bg-zinc-700
-            "
-          >
-            {tag}
+    <article className="group py-8 border-b border-zinc-200 dark:border-zinc-800">
+      <div className="flex items-start gap-6">
+        {index !== undefined && (
+          <span className="text-xs font-mono text-zinc-300 dark:text-zinc-700 pt-1 min-w-[2rem] select-none">
+            {String(index).padStart(2, "0")}
+          </span>
+        )}
+
+        <div className="flex-1 flex flex-col gap-3">
+          <div className="flex flex-wrap gap-1.5">
+            {data.tags.map((tag, i) => (
+              <span
+                key={i}
+                className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 border border-zinc-300 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 rounded"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
-        ))}
+
+          <h2 className="text-lg font-semibold leading-snug tracking-tight text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-500 dark:group-hover:text-zinc-400 transition-colors duration-200">
+            {data.title}
+          </h2>
+
+          <p className="text-sm text-zinc-500 dark:text-zinc-500 leading-relaxed line-clamp-2">
+            {data.contents}
+          </p>
+
+          <div className="flex items-center justify-between">
+            <time className="text-xs font-mono text-zinc-400 dark:text-zinc-600">
+              {data.date.toLocaleDateString("ko-KR", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              })}
+            </time>
+            <span className="text-xs text-zinc-400 dark:text-zinc-600 flex items-center gap-1 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-hover:gap-2 transition-all duration-200">
+              Read more <span>→</span>
+            </span>
+          </div>
+        </div>
       </div>
-
-      <h1 className="font-semibold dark:text-zinc-200">{data.title}</h1>
-
-      <p
-        className="
-      text-sm text-zinc-500 dark:text-zinc-400
-      break-keep"
-      >
-        {data.contents.length > 100
-          ? data.contents.slice(0, 100) + "..."
-          : data.contents}
-      </p>
-
-      <div className="w-full flex justify-between text-xs">
-        <p className="text-xs dark:text-zinc-300">
-          {data.date.toLocaleDateString("ko-KR")}
-        </p>
-        <p
-          className="
-          relative
-          inline-block
-          text-zinc-600 dark:text-zinc-300
-          cursor-pointer
-
-          after:absolute
-          after:left-0
-          after:bottom-0
-          after:h-[.5px]
-          after:w-0
-          after:bg-current
-
-          after:transition-all
-          after:duration-300
-
-          hover:after:w-full
-          "
-        >
-          → 자세히 보기
-        </p>
-      </div>
-    </div>
+    </article>
   );
 };
