@@ -20,19 +20,19 @@ export default function WritePage() {
 
   const mdTheme: "light" | "dark" = theme === "dark" ? "dark" : "light";
 
-  const logout = async () => {
-    await supabase.auth.signOut();
-    setUser(null);
-    router.replace("/");
-  };
-
   useEffect(() => {
+    const logout = async () => {
+      await supabase.auth.signOut();
+      setUser(null);
+      router.replace("/");
+    };
+
     if (!user) return;
 
     if (user.id !== USER_ID) {
       logout();
     }
-  }, [user]);
+  }, [user, router, setUser]);
 
   if (!user || user.id !== USER_ID) {
     return null; // 또는 loading UI
