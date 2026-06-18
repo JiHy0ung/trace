@@ -8,7 +8,7 @@ const AdminLoginButton = () => {
     await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: `${location.origin}/admin/write`,
+        redirectTo: `${location.origin}/`,
       },
     });
   };

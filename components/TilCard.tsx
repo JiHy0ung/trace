@@ -7,7 +7,7 @@ interface TilCardProps {
 
 export const TilCard = ({ data, index }: TilCardProps) => {
   return (
-    <article className="group py-8 border-b border-zinc-200 dark:border-zinc-800">
+    <article className="group py-8 px-4 border-b border-zinc-200 dark:border-zinc-800">
       <div className="flex items-start gap-6">
         {index !== undefined && (
           <span className="text-xs font-mono text-zinc-300 dark:text-zinc-700 pt-1 min-w-[2rem] select-none">
@@ -27,7 +27,7 @@ export const TilCard = ({ data, index }: TilCardProps) => {
             ))}
           </div>
 
-          <h2 className="text-lg font-semibold leading-snug tracking-tight text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-500 dark:group-hover:text-zinc-400 transition-colors duration-200">
+          <h2 className="text-lg font-semibold leading-snug tracking-tight text-zinc-900 dark:text-zinc-100  transition-colors duration-200">
             {data.title}
           </h2>
 

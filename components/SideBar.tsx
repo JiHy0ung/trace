@@ -96,9 +96,15 @@ const SideBar = () => {
           className="flex self-end p-3 cursor-pointer"
         >
           {theme === "dark" ? (
-            <MoonIcon size={24} className={"text-sky-200"} />
+            <MoonIcon
+              size={24}
+              className={"text-zinc-300 hover:text-sky-300"}
+            />
           ) : (
-            <SunIcon size={24} className={"text-amber-400"} />
+            <SunIcon
+              size={24}
+              className={"text-zinc-400 hover:text-amber-400"}
+            />
           )}
         </button>
 
@@ -116,11 +122,11 @@ const SideBar = () => {
             <div className="relative w-6 h-6 group cursor-pointer">
               <UserRoundCheckIcon
                 size={24}
-                className="absolute inset-0 text-pink-400 opacity-100 group-hover:opacity-0 transition"
+                className="absolute inset-0 text-pink-600 opacity-100 group-hover:opacity-0 transition"
               />
               <LogoutIcon
                 size={24}
-                className="absolute inset-0 text-pink-400 opacity-0 group-hover:opacity-100 transition"
+                className="absolute inset-0 text-pink-600 opacity-0 group-hover:opacity-100 transition"
               />
             </div>
           ) : (
