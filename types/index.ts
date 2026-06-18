@@ -1,8 +1,7 @@
 export interface ITil {
-  id: string;
+  id: number;
+  created_at: string;
   title: string;
   contents: string;
-  date: Date;
-  image?: string;
   tags: string[];
 }
