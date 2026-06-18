@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function TilPage() {
   const data = dummyData;
   return (
-    <div className="w-full h-screen flex flex-col bg-zinc-50 dark:bg-zinc-950">
+    <div className="w-full h-screen flex flex-col items-center bg-zinc-50 dark:bg-zinc-950">
       <header className="flex-none w-full max-w-2xl mx-auto px-6 pt-20 pb-8">
         <p className="text-xs tracking-[0.2em] uppercase text-zinc-400 dark:text-zinc-500 mb-4">
           Learning Journal
@@ -31,7 +31,11 @@ export default function TilPage() {
         </div>
       </header>
 
-      <div id="list" className="flex-1 overflow-y-auto">
+      <div
+        id="list"
+        className=" flex-1
+        overflow-y-auto custom-scroll"
+      >
         <div className="w-full max-w-2xl mx-auto px-6 pb-16 flex flex-col">
           {data.map((item, index) => (
             <Link key={item.id} href={`/til/${item.id}`}>
